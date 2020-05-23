@@ -1,0 +1,13 @@
+.sign-in-container, .sign-up-container{
+    padding:100px;
+}
+.sign-up-button{
+    padding-top:2rem;
+    a{
+        text-decoration: none;
+        border:1px solid rgb(12,66,55);
+        color:white;
+        padding:1rem 2rem;
+        background-color:rgb(12,66,55);
+    }
+}

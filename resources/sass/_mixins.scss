@@ -1,0 +1,35 @@
+@mixin mediaQuery($screenSize){
+
+    @if $screenSize == phone{
+        @media (max-width:599px){
+            @content
+        };
+    }
+    @if $screenSize == tablet-portrait-up{
+        @media (min-width:600px){ 
+            @content
+        };
+    }
+    @if $screenSize == tablet-landscape-up{
+       @media (min-width:900px){
+           @content
+       };
+   }
+   @if $screenSize == desktop-up{
+       @media (min-width:1200px){
+           @content
+       };
+   }
+//    @if $screenSize == big-desktop-up{
+//        @media (min-width:1800px){
+//            @content
+//        };
+//    }
+   @if $screenSize == big-desktop-up{
+       @media (min-width:1500px){
+           @content
+       };
+   }
+  
+  
+}

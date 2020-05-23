@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,500,700&display=swap');
+@import 'bootstrap-social.css';
+@import 'mixins';
+@import 'navigation';
+@import 'hero';
+@import 'member';
+@import 'second-nav';
+@import "profile";
+@import "userProducts";
+@import "./admin/products";
+@import "approved-products";
+
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100%;
+    height:100vh;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    overflow-x: hidden;
+    background:white;
+}
+
+.background-color-one{
+    background-color:rgb(204,154,134);
+}
+.main-dropdown{
+    // z-index:2;
+    a{
+        color:black !important;
+    }
+}

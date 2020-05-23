@@ -1,0 +1,82 @@
+.user-side-bar{
+    position: relative;
+}
+.sticky-side-bar{
+    position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+    height: 100%;
+    // background-color:rgb(204,154,134);
+    // background-color:rgb(189,128,109);
+    // background-color:rgb(140,117,106);
+    // background-color:rgb(12,66,55);
+    background-color: white;
+    border-right:1px solid black;
+}
+.sticky-items-container{
+    position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+    padding: 0 15px;
+    // color:white;
+    color:black;
+}
+.sticky-items{
+    padding-top:50px;
+    position: fixed;
+    ul{
+        li{
+            list-style: none;
+            padding-bottom:0.5rem;
+            padding-top:0.5rem;
+            padding-right:2rem;
+            padding-left:3rem;
+            a{
+                text-decoration: none;
+                padding:1rem 0rem;
+                // color:white;
+                color:black;
+                // &:hover{
+                //     background-color:rgb(204,154,134);
+                  
+                //  }
+            }
+            &:hover{
+                background-color:rgb(204,154,134);
+              
+            }
+        }
+    }
+}
+.user-image-container{
+    width:150px;
+    height:150px
+}
+.user-image{
+    border-radius:50%;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.activity-card-container{
+    display:grid;
+    grid-gap:1rem;
+    grid-template-columns:repeat(auto-fill, minmax(310px,1fr));
+    // margin-left:10rem;
+    // margin-right:10rem;
+    margin-top:2rem;
+    margin-bottom:2rem;
+    justify-items: center;
+}
+.activity-card{
+    width:20rem;
+    height:20rem;
+    box-shadow:0px 4px 8px 0px grey;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    
+    &:hover{
+        box-shadow: 0px 16px 32px 0px grey;
+    }
+}
