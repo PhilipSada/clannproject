@@ -23,8 +23,8 @@ Auth::routes();
 Route::get('/','LandingPageController@show');
 Route::get('/sign-in','LandingPageController@signIn');
 Route::get('/sign-up','LandingPageController@signUp');
-Route::get('/login/google', 'Auth\LoginController@redirectToProvider');
-Route::get('/login/google/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/products', 'LandingPageController@approvedProducts');
 
 //user profile page
