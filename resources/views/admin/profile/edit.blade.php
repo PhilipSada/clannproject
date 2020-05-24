@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <form enctype="multipart/form-data" action="/profile-image" method="POST">
+                    <form enctype="multipart/form-data" action="/admin/profile-image" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="uploadImage">Upload Profile Image</label>
