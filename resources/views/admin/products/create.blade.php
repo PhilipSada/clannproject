@@ -63,7 +63,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="uploadImage">Upload Product Image</label>
-                                            <input id="uploadImage" type="file" class="form-control" @error('productImage') is-invalid @enderror" name="productImage" value="{{ old('productImage') }}">
+                                            <input id="uploadImage" type="file" class="form-control" @error('productImage') is-invalid @enderror name="productImage" value="{{ old('productImage') }}">
                                     
                                             @error('productImage')
                                                 <span class="invalid-feedback" role="alert">
