@@ -79,7 +79,7 @@
                                      <tr>
                                          <td scope="row">{{$product->title}}</td>
                                          <td>{{$product->category_title}}</td>
-                                         <td>{{$product->created_by}}</td>
+                                         <td>{{$product->created_by_name}}</td>
                                          @if($product->approve === null)
                                          <td>Waiting for approval</td> 
                                          @else
