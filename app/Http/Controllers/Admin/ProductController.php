@@ -74,7 +74,8 @@ class ProductController extends Controller
             
         ]);
 
-        $productImage = $request->file('productImage');
+        // $productImage = $request->file('productImage');
+        $productImage = request('productImage');
         $filename=time() . '.' . $productImage->getClientOriginalExtension();
         Image::make($productImage)->resize(500,500)->save(public_path('/images/uploads/userProducts/'. $filename));
 
