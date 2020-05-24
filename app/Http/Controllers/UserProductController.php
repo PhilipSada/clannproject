@@ -58,18 +58,18 @@ class UserProductController extends Controller
         $product->created_by_name = $user->name;
         $product->save();
         
-        $content = [
-            'name'=>$user->name,
-            'email'=>$user->email
-        ];
+        // $content = [
+        //     'name'=>$user->name,
+        //     'email'=>$user->email
+        // ];
 
-        $recipients =[
-            'sadaphillip@gmail.com',
-            'vctrsada@gmail.com'
+        // $recipients =[
+        //     'sadaphillip@gmail.com',
+        //     'vctrsada@gmail.com'
 
-        ];
+        // ];
          
-        Mail::to($recipients)->send(new AwaitingProductApproval($content));
+        // Mail::to($recipients)->send(new AwaitingProductApproval($content));
         
         // $adminUser = User::where('email', 'sadaphillip@gmail.com');
         // $adminUser = User::find(4);

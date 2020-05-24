@@ -54,13 +54,13 @@ class ProductController extends Controller
             $product->productImage = '/images/uploads/userProducts/'.$filename;
          }
          $product->save();
-         $content = [
-            'name'=>$product->created_by_name,
-            'email'=>$product->created_by_email
-         ];
+        //  $content = [
+        //     'name'=>$product->created_by_name,
+        //     'email'=>$product->created_by_email
+        //  ];
 
         //  Mail::to('sadaphillip@gmail.com')->send(new ProductApproved($content));
-         Mail::to($product->created_by_email)->send(new ProductApproved($content));
+        //  Mail::to($product->created_by_email)->send(new ProductApproved($content));
          return redirect('/admin/advertised-products');
     }
     public function createProduct(Request $request){
