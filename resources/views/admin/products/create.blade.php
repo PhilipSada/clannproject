@@ -16,7 +16,7 @@
                     <div class="card">
                         <h5 class="card-header">Create a new product advertisement</h5>
                         <div class="card-body">
-                           <form method="POST" action="/advertise-product/create" enctype="multipart/form-data">
+                           <form method="POST" action="/admin/advertise-product/create" enctype="multipart/form-data">
                                @csrf
                                <div class="form-group">
                                    <label for="inputTitle">Name</label>
