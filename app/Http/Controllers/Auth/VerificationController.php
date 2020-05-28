@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use App\User;
 
 class VerificationController extends Controller
 {
@@ -28,6 +30,13 @@ class VerificationController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = '/profile';
+    // protected function authenticated(Request $request, $user){
+    //     if($user->is_admin){
+    //         return redirect('/admin/profile');
+    //     }else{
+    //         return redirect('/profile');
+    //     }
+    //  }
 
     /**
      * Create a new controller instance.

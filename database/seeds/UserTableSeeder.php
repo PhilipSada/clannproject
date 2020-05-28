@@ -14,10 +14,11 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Philip Sada',
-            'email' => 'sadaphillip@yahoo.com',
+            'name' => 'Philipe Sada',
+            'email' => 'sada_phillip@yahoo.com',
             'password' => Hash::make('12345678'),
             'is_admin'=>1,
+            'email_verified_at' => now(),
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now()
         ]);
@@ -26,6 +27,7 @@ class UserTableSeeder extends Seeder
             'email' => 'vctrsada@gmail.com',
             'password' => Hash::make('12345678'),
             'is_admin'=>1,
+            'email_verified_at' => now(),
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now()
         ]);

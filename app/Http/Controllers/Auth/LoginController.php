@@ -69,29 +69,33 @@ class LoginController extends Controller
         // if(explode("@", $user->email)[1] !== 'company.com'){
         //     return redirect()->to('/');
         // }
+      
         // check if they're an existing user
         $existingUser = User::where('email', $user->email)->first();
         if($existingUser){
             // log them in
             auth()->login($existingUser, true);
+            
         } else {
             // create a new user
             $newUser                  = new User;
-            $newUser->name      =       $user->name;
+            $newUser->name            = $user->name;
             $newUser->email           = $user->email;
             $newUser->google_id       = $user->id;
+            $newUser->email_verified_at = now();
             $newUser->avatar          = $user->avatar;
             $newUser->avatar_original = $user->avatar_original;
             $newUser->save();
             auth()->login($newUser, true);
         }
-        if($existingUser->is_admin){
+
+
+        $adminUser = User::where('email', $user->email)->where('is_admin', 1)->first();
+        if($adminUser){
             return redirect('/admin/profile');
-        }else{
-            return redirect('/profile');
         }
-        // return redirect()->to('/profile');
-        
+
+        return redirect('/profile');
         
         
         // $user = Socialite::driver('google')->user();

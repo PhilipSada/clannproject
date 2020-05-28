@@ -15,7 +15,7 @@
         
     </head>
     <body>
-        @include('includes.second-nav')
+        {{-- @include('includes.second-nav') --}}
 
           
         @yield('content')

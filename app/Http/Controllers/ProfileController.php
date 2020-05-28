@@ -12,7 +12,7 @@ class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('is.auth');
+        $this->middleware(['is.auth', 'verified']);
     }
     public function show(){
         $user = Auth::user();

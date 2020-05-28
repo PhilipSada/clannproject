@@ -1,6 +1,7 @@
-<div class="sticky-side-bar">
-    <div class="sticky-items-container">
-        <div class="sticky-items">
+<div class="user-side-bar">
+    <div class="user-items-container">
+        <div class="user-items">
+            <div class="side-logo-container"><a href="/" class="side-logo">Clann</a></div><br><br><br>
             <ul>
                 <li><a href="/admin/profile">Overview</a></li>
                 <li><a href="/admin/advertise-product">Advertise your product</a></li>

@@ -22,6 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('otherPriceRange')->nullable();
             $table->string('created_by_name')->nullable();
             $table->string('created_by_email')->nullable();
+            $table->string('bid_ref_no')->nullable();
+            $table->boolean('product_sold')->default(false);
             $table->boolean('approve')->nullable();
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->string('category_title')->nullable();

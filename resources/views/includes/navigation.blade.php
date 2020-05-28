@@ -1,14 +1,13 @@
 <nav class="navigate">
-    <div class="logo"><a href="/">CLANN</a></div>
+    <div class="main-logo-container"><a href="/"><img src="/images/logo-white.png" class="main-logo-image"></a></div>
     <div class="nav-links">
         <ul>
             <li><a class="about-link">About</a></li>
-            <li><a class="work-link">Testimonials</a></li>
-            <li><a href="/products" class="contact-link">Products</a></li>
-            <li><a class="contact-link">Plans</a></li>
+            <li><a class="work-link">Blog</a></li>
+            <li><a href="/products" class="contact-link">Business</a></li>
             @guest
             <li><a  href="/sign-in" class="signIn">Sign In</a></li>
-            <li><a  href="/sign-up" class="signIn">Sign Up</a></li>
+            {{-- <li><a  href="/sign-up" class="signIn">Sign Up</a></li> --}}
             @else
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

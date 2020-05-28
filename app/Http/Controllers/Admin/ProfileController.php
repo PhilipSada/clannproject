@@ -11,6 +11,11 @@ use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['is.admin', 'verified']);
+    }
+
     public function show(){
         $user = Auth::user();
         $userDetails = Auth::user();

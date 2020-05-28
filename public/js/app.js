@@ -71777,6 +71777,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
+__webpack_require__(/*! ./main */ "./resources/js/main.js");
+
 __webpack_require__(/*! ./components/Notifications */ "./resources/js/components/Notifications.js");
 
 /***/ }),
@@ -71938,6 +71940,25 @@ var Notifications = /*#__PURE__*/function (_Component) {
 if (document.getElementById('notifications')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Notifications, null), document.getElementById('notifications'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// const signUpButton = document.querySelector('#signUp');
+// const signInButton = document.querySelector('#signIn');
+// const container = document.querySelector('#container');
+// signUpButton.addEventListener('click', ()=>{
+//     container.classList.add('right-panel-active');
+// });
+// signInButton.addEventListener('click', ()=>{
+//     container.classList.remove('right-panel-active');
+// });
 
 /***/ }),
 

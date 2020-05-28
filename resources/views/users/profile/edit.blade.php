@@ -2,11 +2,12 @@
 @section('title', 'profile')
 @section('content')
 <div>
-    <div class="row">
-        <div class="col-md-2 user-side-bar">
-           @include('includes.sticky-side-bar')
+    <div class="user-view-wrapper">
+        <div class="side-view views">
+            @include('includes.user-side-bar')
         </div>
-        <div class="col-md-10 main-area pt-5">
+        <div class="main-view views">
+            @include('includes.second-nav')
             <h4>Edit your profile</h4>
             <div class="row">
                 <div class="col-md-4">
@@ -37,8 +38,6 @@
                     </form>
                 </div>
             </div>
-            
-         
             <div class="row mt-4">
                 <div class="col-md-8">
                     <h4>Personal Information</h4>
@@ -66,7 +65,7 @@
                        </div>
                        <div class="form-group">
                         <label for="userType">User Type</label>
-                        <select class="form-control  @error('userType') is-invalid @enderror" id="userType" name="userType">
+                        <select class="form-control  @error('userType') is-invalid @enderror" id="userType" name="userType" required>
                           <option value="choose">Choose User Type</option>
                           <option value="Tenant">Tenant</option>
                           <option value="Landlord">Landlord</option>
@@ -78,9 +77,8 @@
                        @enderror
                       </div>
                        <div class="form-group">
-                        <label for="estateName">Your Estate</label>
-                        <select class="form-control  @error('estateName') is-invalid @enderror" id="estateName" name="estateName">
-                          <option value="choose">Choose Your Estate</option>
+                        <label for="estateName">Select Your Estate</label>
+                        <select class="form-control  @error('estateName') is-invalid @enderror" id="estateName" name="estateName" required>
                           <option value="Value County Estate">Value County Estate</option>
                           <option value="Crown Estate">Crown Estate</option>
                           <option value="Victoria Garden City">Victoria Garden City (V.G.C)</option>
