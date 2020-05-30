@@ -21,7 +21,7 @@
 
             </p> Your product has been approved by the Clann Team  </p>
                 
-            <a href="https://freshmann.net" style="text-decoration:none; color:white; background-color:black;
+            <a href="https://myclann.co" style="text-decoration:none; color:white; background-color:black;
                 padding:1rem 2rem margin-top:2rem; border:1px solid black">Go to site</a>
             
             
