@@ -7,8 +7,9 @@
             @include('includes.user-side-bar')
         </div>
         <div class="main-view views">
-            @include('includes.second-nav')
-            <h5>My Products</h5>
+            <div class="main-view-split">
+                <div class="left-section view-split">
+                    <h5>My Products</h5>
             <div class="created-products-wrapper">
                 <div class="created-products">
                     @if($products->count() === 0)
@@ -96,6 +97,15 @@
              <div class="product-bids-sent">
 
              </div>
+                </div>
+                <div class="right-section view-split">
+                
+                    <div class="right-side-view">
+                        @include('includes.right-sidebar')
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
     

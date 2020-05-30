@@ -47,6 +47,7 @@ Route::post('/advertise-product/create', 'UserProductController@createProduct');
 Route::get('/products', 'UserProductController@approvedProducts');
 Route::get('/products/{slug}', 'UserProductController@approvedSingleProduct');
 Route::post('/products/{slug}/bid', 'UserProductController@bidProduct');
+Route::post('/{slug}/bid', 'UserProductController@bidProductModal');
 Route::post('/contact', 'ContactController@contactSeller');
 
 //bids

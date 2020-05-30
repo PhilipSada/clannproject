@@ -7,9 +7,10 @@
             @include('includes.user-side-bar')
         </div>
         <div class="main-view views">
-            @include('includes.second-nav')
-            <h4>Edit your profile</h4>
-            <div class="row">
+            <div class="main-view-split">
+                <div class="left-section view-split">
+                    <h4 class="pt-4">Edit your profile</h4>
+            {{--  <div class="row">
                 <div class="col-md-4">
                     <div class="user-image-container">
                         @if(Auth::user()->avatar != null)
@@ -37,10 +38,10 @@
                        </div>
                     </form>
                 </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-8">
-                    <h4>Personal Information</h4>
+            </div>  --}}
+            <div class="edit-personal-info-wrapper mt-4">
+                <div class="col-md-8 edit-personal-info">
+                    <h4 class="pt-4">Personal Information</h4>
                     <form action="/profile/info/update" method="POST">
                         @csrf
                         <div class="form-group">
@@ -102,12 +103,21 @@
                        @enderror
                     </div>
                       <div class="form-group">
-                        <button type="submit" class="btn btn-dark mb-2">Submit</button>
+                        <button type="submit" class="clann-button mb-2">Submit</button>
                       </div>
                     </form>
                 </div>
                
             </div>
+                </div>
+                <div class="right-section view-split">
+                
+                    <div class="right-side-view">
+                        @include('includes.right-sidebar')
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

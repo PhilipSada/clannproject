@@ -29,9 +29,9 @@ class ProfileController extends Controller
         $user = Auth::user();
         request()->validate([
             'name' => ['string', 'max:255'],
-            'estateName' => ['string', 'max:255'],
+            'estateName' => ['string', 'max:255', 'required'],
             'otherEstateName' => ['max:255'],
-            'userType' => ['string', 'max:255'],
+            'userType' => ['string', 'max:255', 'required'],
             'email' => ['string', 'email', 'max:255', Rule::unique('users')->ignore($user->id),]
             
         ]);
@@ -47,15 +47,12 @@ class ProfileController extends Controller
         return redirect('/profile');
     }
     public function uploadImage(Request $request){
-        request()->validate([
-            'photo'=>['mimes:jpeg,jpg,png,svg', 'max:5120']
-            
-        ]);
-        
-        if($request->hasFile('photo')){
-            $photo = $request->file('photo');
+      
+        //dropzone names the uploaded file as file
+        if($request->hasFile('file')){
+            $photo = $request->file('file');
             $filename=time() . '.' . $photo->getClientOriginalExtension();
-            Image::make($photo)->resize(300,300)->save(public_path('/images/uploads/'. $filename));
+            Image::make($photo)->save(public_path('/images/uploads/'. $filename));
 
             $user = Auth::user();
             $user->avatar = '/images/uploads/'.$filename;
@@ -63,6 +60,6 @@ class ProfileController extends Controller
         }
         
 
-        return redirect('/profile/edit');
+        return redirect('/profile');
     }
 }

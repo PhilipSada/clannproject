@@ -7,73 +7,101 @@
             @include('includes.user-side-bar')
         </div>
         <div class="main-view views">
-            @include('includes.second-nav')
-            <div class="top-profile-image-wrapper">
-                <div class="top-photo-wrapper">
-                    <div class="user-image-container">
-                        @if(Auth::user()->avatar != null)
-                        <img src="{{Auth::user()->avatar}}" class="user-image">
-                        @else
-                        <img src="/images/default.png" class="user-image">
-                        @endif
-                    </div> 
-                    <div class="top-profile-info">
-                        <h5>{{Auth::user()->name}}</h5>
-                        <h5>{{Auth::user()->email}}</h5>
+           <div class="main-view-split">
+            <div class="left-section view-split">
+                {{-- @include('includes.second-nav') --}}
+                <div class="top-profile-image-wrapper">
+                    <div class="top-photo-wrapper">
+                        <div class="user-image-container">
+                            @if(Auth::user()->avatar != null)
+                            <img src="{{Auth::user()->avatar}}" class="user-image">
+                            @else
+                            <img src="/images/default.png" class="user-image">
+                            @endif
+                            <div class="upload-image-hover">
+                                <div class="upload-image-button">Upload Photo</div>
+                            </div>
+                        </div> 
+                       
+                        <div class="top-profile-info">
+                            <h5>{{Auth::user()->name}}</h5>
+                            <h5>{{Auth::user()->email}}</h5>
+                        </div>
+                    </div>
+                    <div class="top-profile-button">
+                        <div><a href="">Upload Cover Photo</a></div>
+                        <div><a href="">Edit Personal Information </a></div>
                     </div>
                 </div>
-                <div class="top-profile-button">
-                    <div><a href="">Upload Cover Photo</a></div>
-                    <div><a href="">Edit Personal Information </a></div>
+               
+                <div class="upload-image-modal-container">
+                    <div class="upload-image-modal">
+                        <div class="profile-image-error"></div>
+                        <form method="post" action="/profile-image" enctype="multipart/form-data"
+                        class="dropzone profile-image-modal-form" id="dropzone">
+                          @csrf
+                      </form>
+                      <button class="close-button mt-4">Back</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="personal-info-wrapper">
+                        <h5>My Personal Information</h5>
+                        <div>
+                            <table class="personal-info-table">
+                                    <tr>
+                                        <th>Name:</th>
+                                        <td>{{$userDetails->name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email:</th>
+                                        <td>{{$userDetails->email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Resident Status:</th>
+                                        @if(Auth::user()->userType === null || Auth::user()->userType === "choose")
+                                        <td>None Specified</td>
+                                    @else
+                                    <td>{{$userDetails->userType}}</td>
+                                    @endif
+                                    </tr>
+                                    <tr>
+                                        <th>Estate:</th>
+                                        @if(Auth::user()->estateName !== null && Auth::user()->otherEstateName === null )
+                                        <td>{{$userDetails->estateName}}</td>
+                                        @elseif(Auth::user()->estateName === null && Auth::user()->otherEstateName === null )
+                                        <td>None Specified</td>
+                                        @elseif(Auth::user()->estateName === 'Others' && Auth::user()->otherEstateName === null )
+                                        <td>None Specified</td>
+                                        @elseif(Auth::user()->estateName === 'Others' && Auth::user()->otherEstateName !== null )
+                                        <td>{{$userDetails->otherEstateName}}</td>
+                                        @else
+                                        <td>{{$userDetails->estateName}}</td>
+                                        @endif
+                                    </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <a href="/profile/edit" class="clann-button"> Edit Profile</a>
+                        </div>
+                    </div>
+                    <div class="professional-experience-wrapper">
+                        <div>
+                            <div>Add your professional experience to increase your chances of being hired</div>
+                        </div>
+                   </div>
                 </div>
             </div>
-            <div>
-                <div class="personal-info-wrapper">
-                    <h5>My Personal Information</h5>
-                    <div>
-                        <table class="personal-info-table">
-                                <tr>
-                                    <th>Name:</th>
-                                    <td>{{$userDetails->name}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email:</th>
-                                    <td>{{$userDetails->email}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Resident Status:</th>
-                                    @if(Auth::user()->userType === null || Auth::user()->userType === "choose")
-                                    <td>None Specified</td>
-                                @else
-                                <td>{{$userDetails->userType}}</td>
-                                @endif
-                                </tr>
-                                <tr>
-                                    <th>Estate:</th>
-                                    @if(Auth::user()->estateName !== null && Auth::user()->otherEstateName === null )
-                                    <td>{{$userDetails->estateName}}</td>
-                                    @elseif(Auth::user()->estateName === null && Auth::user()->otherEstateName === null )
-                                    <td>None Specified</td>
-                                    @elseif(Auth::user()->estateName === 'Others' && Auth::user()->otherEstateName === null )
-                                    <td>None Specified</td>
-                                    @elseif(Auth::user()->estateName === 'Others' && Auth::user()->otherEstateName !== null )
-                                    <td>{{$userDetails->otherEstateName}}</td>
-                                    @else
-                                    <td>{{$userDetails->estateName}}</td>
-                                    @endif
-                                </tr>
-                        </table>
-                    </div>
-                    <div>
-                        <a href="/profile/edit" class="btn btn-dark"> Edit Profile</a>
-                    </div>
+            <div class="right-section view-split">
+                
+                <div class="right-side-view">
+                    @include('includes.right-sidebar')
                 </div>
-                <div class="professional-experience-wrapper">
-                    <div>
-                        <div>Add your professional experience to increase your chances of being hired</div>
-                    </div>
-               </div>
-        </div>
+            </div>
+           </div>
+            
+            
             
             {{-- <div class="mt-4">
                 <h4>Explore your area</h4>
@@ -104,6 +132,7 @@
                        </div>
                   </div>
             </div> --}}
+            
         </div>
     </div>
    

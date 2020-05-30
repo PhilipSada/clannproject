@@ -51,7 +51,7 @@ class UserProductController extends Controller
         // $productImage = $request->file('productImage');
         $productImage = request('productImage');
         $filename=time() . '.' . $productImage->getClientOriginalExtension();
-        Image::make($productImage)->resize(500,500)->save(public_path('/images/uploads/userProducts/'. $filename));
+        Image::make($productImage)->save(public_path('/images/uploads/userProducts/'. $filename));
 
         $product = new Product();
         $product->title = request('title');
@@ -96,6 +96,35 @@ class UserProductController extends Controller
             'product'=>$product,
             'similarProducts'=>$similarProducts
         ]);
+    }
+    public function bidProductModal(Request $request){
+        $user = Auth::user();
+        $bid = new Bid();
+        $bid->product_title = request('product_title');
+        $bid->priceRange = request('priceRange');
+        $bid->product_description = request('product_description');
+        $bid->category_title = request('category_title');
+        $bid->seller_email = request('seller_email');
+        $bid->seller_name = request('seller_name');
+        $bid->bidPrice = request('bidPrice');
+        $bid->bid_ref_no = request('bid_ref_no');
+        $bid->bidder_email = $user->email;
+        $bid->bidder_name = $user->name;
+        $bid->save();
+        
+        $content = [
+            'name'=>$user->name,
+            'email'=>$user->email,
+            'product_title'=>request('product_title'),
+            'seller_name'=>request('seller_name'),
+            'bidPrice'=>request('bidPrice')
+        ];
+
+        $recipient = request('seller_email');
+         
+        Mail::to($recipient)->send(new BidPriceSent($content));
+        //change redirect to a confirmation page or use react to change the space of the form to bid price has been sent to the seller
+        return redirect('/profile');
     }
     public function bidProduct(Request $request){
         
