@@ -1,0 +1,206 @@
+// .hero-container{
+//     position: relative;
+// }
+.product-page-background{
+    background-color: white !important;
+}
+.hero-image-container{
+    // background-color:rgba(12, 66, 55, 0.753);
+    // background:url('/images/people.jpg');
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    height:40vh;
+    width:100%;
+    // display:flex;
+    // justify-content: center;
+    // align-items: center;
+    // position: relative;
+}
+.carousel-container{
+    height:40vh;
+    width:100%;
+    .slider-image{
+        height:40vh;
+        width:100%;
+        object-fit: cover;
+    }
+}
+.hero-image{
+    position: relative; 
+    height:40vh;
+    // background-color:rgba(12, 66, 55, 0.753);
+    // background-color:rgb(9,147,64);
+    background:url('/images/clothes.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:100%;
+}
+.overlay{
+    position: absolute;
+    top:0;
+    height:40vh;
+    width:100%;
+    z-index:1;
+    // background-color:rgba(12, 66, 55, 0.911);
+    // background-color: rgba(0, 0, 0, 0.479);
+    // background-color:rgb(9,147,64);
+}
+.products-grid{
+    display:grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 3rem;
+    margin-top:2rem;
+    margin-left:7rem;
+    margin-right:7rem;
+}
+.product-main-card-effect{
+    cursor: pointer;
+
+    // box-shadow:0px 4px 8px 0px grey;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    
+    &:hover{
+        box-shadow:0px 4px 8px 0px grey;
+    }
+}
+.products-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .products-modal{
+        width:70%;
+        top:0;
+        left:0;
+        height:80vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+        overflow-y: auto;
+    }
+}
+.close-products-modal{
+    float:right;
+   
+}
+
+//for the single product page
+.product-title{
+    text-transform: capitalize;
+    font-size:2rem;
+    
+}
+.product-price{
+    text-transform: uppercase;
+
+}
+.main-product-detail-container{
+    margin-left:12rem;
+    margin-right:12rem;
+    margin-top:4rem;
+    p{
+        line-height: 1.5;
+    }
+    
+}
+.main-product-details{
+    display: flex;
+    justify-content:center;
+    // align-items: center;
+    width:100%;
+    height:500px;
+    
+    
+    // .product-description{
+    //     height:200px;
+    // }
+    .single-image-container{
+        width:40%;
+    }
+    .main-product-items-container{
+        width:60%;
+        // border:1px solid grey;
+        h4{
+            font-family:'Merriweather', serif;
+            font-weight:700;
+        }
+        .product-price{
+            color:rgba(12, 66, 55, 0.89);
+        }
+    }
+    .product-items-action{
+        display:flex;
+        // justify-content: space-around;
+        // align-items: center;
+        padding-top:7rem;
+    }
+}
+.product-bid-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .product-bid-modal{
+        width:50%;
+        top:0;
+        left:0;
+        height:50vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+        overflow-y: auto;
+    }
+}
+.close-product-bid-modal{
+    float:right;
+   
+}
+.contact-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .contact-modal{
+        width:50%;
+        top:0;
+        left:0;
+        height:70vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+        overflow-y: auto;
+    }
+}
+.close-contact-modal{
+    float:right;
+   
+}
+
+.single-page-background{
+    background-color: white !important;
+}

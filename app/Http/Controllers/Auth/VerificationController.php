@@ -30,13 +30,7 @@ class VerificationController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = '/profile';
-    // protected function authenticated(Request $request, $user){
-    //     if($user->is_admin){
-    //         return redirect('/admin/profile');
-    //     }else{
-    //         return redirect('/profile');
-    //     }
-    //  }
+    
 
     /**
      * Create a new controller instance.

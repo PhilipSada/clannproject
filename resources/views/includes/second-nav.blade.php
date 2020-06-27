@@ -1,10 +1,19 @@
 <nav class="second-navigate">
-    <div class="second-logo"><a href="/"></a></div>
+    {{--  <div class="second-logo"><a href="/"></a></div>  --}}
+    <div class="second-logo-container"><a href="/"><img src="/images/logo-green.png" class="second-logo-image"></a></div>
+    <div>
+        <form action="/search-result" method="GET" class="search-form">
+            <input type="search" name="search" placeholder="Search" class='search-edit'> 
+            <a class="search-button" type="submit"><i class="fa fa-search"></i></a>
+        </form>
+    </div>
     <div class="second-nav-links">
+       
         <ul>
-            <li><a class="about-link">About</a></li>
+            {{-- <li><a class="about-link">Home</a></li> --}}
             <li><a class="work-link">Blog</a></li>
-            <li><a href="/products" class="contact-link">Business</a></li>
+            <li><a href="/products" class="contact-link">Jobs</a></li>
+            <li><a href="/products" class="contact-link">Products</a></li>
             @guest
             <li><a  href="/sign-in" class="signIn">Sign In</a></li>
             {{-- <li><a  href="/sign-up" class="signIn">Sign Up</a></li> --}}

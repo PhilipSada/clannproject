@@ -17,7 +17,7 @@
     </head>
     <body>
         {{-- @include('includes.second-nav') --}}
-
+        
           
         @yield('content')
         <script src="/js/app.js"></script>

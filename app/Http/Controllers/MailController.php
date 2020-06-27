@@ -12,5 +12,8 @@ class MailController extends Controller
     public function productApproved(){
         return view('mails/productApproved');
     } 
+    public function forgotPassword(){
+        return view('mails/forgotPassword');
+    }
     
 }

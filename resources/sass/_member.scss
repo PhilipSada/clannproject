@@ -34,12 +34,27 @@
     .sign-up-form-link{
         right:0;
         width:40%;
-        background-color:rgb(204,154,134);
+        // background-color:rgb(204,154,134);
+        // background-color:rgb(12,66,55);
+        // background-image: linear-gradient(to left bottom, rgb(12,66,55),rgb(12,66,55)), url('/images/together.jpeg');
+        // background-image: url('/images/together.jpeg');
+        background-image: linear-gradient(to right bottom, rgb(12,66,55),rgba(12, 66, 55, 0.733));
+        // background-size: cover;
+        // background-position: top;
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // background-attachment: fixed;
         display:flex;
         justify-content: center;
         align-items:center;
         flex-direction:column;
+        h1, p{
+            color:white;
+            padding-bottom:1rem;
+            z-index:10;
+        }
         .sign-up-button{
+            z-index:10;
             a{
                 text-decoration: none;
                 color:white;
@@ -58,6 +73,12 @@
             }
         }
     } 
+    // .right-overlay{
+    //     right:0;
+    //     width:40%;
+    //     background-color:rgba(12, 66, 55, 0.466);
+    //     z-index:4;
+    // }
 }
 
 .sign-up-container{
@@ -71,7 +92,7 @@
         height:100%;
     }
     .sign-up-form-container{
-        right:0;
+        left:0;
         width:60%;
         display:flex;
         align-items:center;
@@ -82,13 +103,19 @@
         }
     }
     .sign-in-form-link{
-        left:0;
+        right:0;
         width:40%;
-        background-color:rgb(204,154,134);
+        // background-color:rgb(204,154,134);
+        // background-color:rgb(12,66,55);
+        background-image: linear-gradient(to right bottom, rgb(12,66,55),rgba(12, 66, 55, 0.733));
         display:flex;
         justify-content: center;
         align-items:center;
         flex-direction:column;
+        h1, p{
+            color:white;
+            padding-bottom:1rem;
+        }
         .sign-in-button{
             a{
                 text-decoration: none;

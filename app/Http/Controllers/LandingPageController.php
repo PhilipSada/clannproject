@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LandingPageController extends Controller
 {
@@ -16,10 +17,19 @@ class LandingPageController extends Controller
     public function signUp(){
         return view('sign-up');
     }
-    public function approvedProducts(){
-        $approvedProducts = Product::where('approve', 1)->get();
-        return view('products', [
-            'approvedProducts'=>$approvedProducts
-        ]);
+    public function showProducts(){
+        
+        return view('products');
+    }
+    public function showSingleProduct(){
+        return view('single-product-page');
+    }
+    public function resetPassword(){
+        return view('resetPassword');
+    }
+    public function signOut(Request $request){
+        Auth::logout();
+
+        return response()->json(['success'=>'Logout successfully']);
     }
 }

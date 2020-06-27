@@ -1,0 +1,665 @@
+
+// .profile-picture{
+//     position:absolute;
+//     bottom:-20%;
+//     left:8%;
+// }
+
+
+
+.profile-info-container{
+    position:absolute;
+    top:0;
+    left:44%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.profile-image-container{
+    width:120px;
+    height:120px;
+    object-fit: contain;
+    position: relative;
+    z-index:3;
+    border:2px solid white;
+    border-radius: 50%;
+        &:hover{
+        .upload-image-hover{
+            opacity:1;
+        }
+    }
+
+    .profile-image{
+        border-radius:50%;
+        width:100%;
+        height:100%;
+    }
+    .upload-image-hover{
+    position:absolute;
+    top:0;
+    background-color:rgba(12, 66, 55, 0.726);
+    // background-color: rgba(0, 0, 0, 0.699);
+    color:white;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    opacity:0;
+    transition:all 0.8s ease;
+    z-index:3;
+    .upload-image-button{
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        padding-top:3rem;
+        font-size:0.9rem;
+        cursor: pointer;
+    }
+  }
+}
+.upload-image-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .upload-image-modal{
+        width:70%;
+        top:0;
+        left:0;
+        height:80vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+    }
+  
+}
+.profile-navigation{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    // height:4px;
+    border-bottom:1px solid gray;
+    width:100%;
+    .profile-products, .profile-jobs{
+        // border-bottom: 2px solid black;
+        width:40%;
+        margin-right:1rem;
+        margin-top:3px;
+        cursor: pointer;
+        color:gray;
+    }
+    .profile-bids{
+        width:40%;
+        margin-top:3px;
+        cursor: pointer;
+        color:gray;
+    }
+    h4{
+        font-size:1rem;
+        text-align: center;
+    }
+
+   
+}
+.active-profile-nav{
+    border-bottom: 2px solid rgb(12, 66, 55);
+    border-radius:1px;
+    color:black !important;
+}
+.profile-navigation-card{
+    height:54px;
+}
+.dropzone-container{
+    width:600px;
+    height:400px;
+    // margin-left:4rem;
+    // margin-top:2rem;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2rem;
+    border:2px dashed grey;
+  
+}
+.dropzone{
+    width:100%;
+    height:100%;
+    // border:1px dashed black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // p{
+        
+    //     text-align: center;
+    // }
+}
+.hero-canvas{
+    margin-left:7rem;
+}
+
+.crop-container{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.crop-image-preview-container{
+    width:500px;
+    height:400px;
+    margin-left:4rem;
+    margin-top:2rem;
+}
+.crop-image-preview{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+.crop-preview-right{
+    // float:right;
+    height:400px;
+    width:350px;
+    border:1px solid black;
+    margin-right:4rem;
+    margin-top:2rem;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // flex-direction: column;
+}
+.profile-image-preview-card{
+    min-height:150px;
+    margin-left:2rem;
+    margin-right:2rem;
+    // width:20rem;
+
+}
+.react-crop-container{
+    width:120px;
+    height:120px;
+    border:2px solid white;
+    .react-crop{
+        width:100%;
+        height:100%;
+        border-radius: 50%;
+        // margin-left:2rem;
+    }
+}
+.close-profile-image-modal{
+    float:right;
+   
+}
+.react-close-icon{
+    font-size:20px;
+    cursor: pointer;
+}
+.profile-image-button-container{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-top:4rem;
+}
+// .personal-info-card, .background-card, .chat-card{
+//     height:30vh;
+// }
+.profile-summary{
+    position: relative;
+    
+}
+.profile-summary-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .profile-summary-modal{
+        width:50%;
+        top:0;
+        left:0;
+        height:40vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+    }
+  
+}
+.close-profile-summary-modal{
+    float:right;
+   
+}
+.edit-profile-summary-icon-container{
+    // float:right;
+    position: absolute;
+    top:0;
+    right:0;
+}
+.job-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .job-modal{
+        width:50%;
+        top:0;
+        left:0;
+        height:75vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+        overflow-y: scroll;
+    }
+  
+}
+.close-job-modal{
+    float:right;
+   
+}
+.profile-flex{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.profile-show-more-btn{
+    width:100%;
+}
+
+.content-body{
+    background-color: rgba(202, 209, 201, 0.171);
+}
+
+
+.card{
+    box-shadow: 0px 1px 1px grey;
+    // outline:1px solid white;
+    // border:1px solid white;
+}
+
+.column-layout-one{
+    margin-left:7rem;
+    margin-right:7rem;
+    
+}
+.column-layout-hero{
+    margin-left:2rem;
+    margin-right:2rem;
+    margin-top:1rem;
+    
+}
+.profile-summary-card{
+    // margin-top:2rem;
+    min-height:150px;
+}
+
+
+
+.personal-info-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .personal-info-modal{
+        width:50%;
+        top:0;
+        left:0;
+        height:85vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+        overflow-y: scroll;
+    }
+}
+.close-personal-info-modal{
+    float:right;
+   
+}
+.job-posting-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .job-posting-modal{
+        width:55%;
+        top:0;
+        left:0;
+        height:70vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+    }
+}
+.close-job-posting-modal{
+    float:right;
+   
+}
+.my-products-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .my-products-modal{
+        width:75%;
+        top:0;
+        left:0;
+        height:85vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+    }
+}
+.close-my-products-modal{
+    float:right;
+   
+}
+.create-product-form{
+    margin-top:2rem;
+    margin-left:5rem;
+    margin-right:5rem;
+}
+.delete-modal-container{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    background-color:rgba(12, 66, 55, 0.808);
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    // opacity:0;
+    // visibility: hidden;
+    .delete-modal{
+        width:50%;
+        top:0;
+        left:0;
+        height:50vh;
+        background:white;
+        box-shadow: 0px 5px 5px white;
+    }
+}
+.close-delete-modal{
+    float:right;
+   
+}
+.personal-info-card {
+    min-height:500px;
+}
+.personal-details-container{
+    border:1px solid rgba(128, 128, 128, 0.082);
+    border-radius: 25px;
+    padding:0.2rem 1rem;
+    margin-bottom:1rem;
+    background-color: rgba(128, 128, 128, 0.082);
+   
+    .personal-details-heading{
+        color:rgba(0, 0, 0, 0.836);
+    }
+    .personal-details-content{
+        color:black;
+        font-weight:bold;
+    }
+}
+.overview-card{
+    width:100%;
+    min-height:150px;
+    // background-color:rgb(9,147,64);
+    background-color: rgba(0, 150, 135, 0.671);
+    color:rgba(255, 255, 255, 0.863);
+}
+.overview-container{
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    .non-created-items{
+        display:flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .created-items{
+        display:flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+.overview-card-container{
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    width:100%;
+    
+}
+.product-statistics-card, .job-statistics-card, .bids-statistics-card{
+    width:20%;
+    margin-top:2rem;
+    min-height:155px;
+    margin-right:1rem;
+}
+.chatroom-card{
+    width:40%;
+    margin-top:2rem;
+    min-height:150px;
+}
+.main-content-card{
+    min-height:800px;
+}
+.product-navigation{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    // height:4px;
+    border-bottom:1px solid gray;
+    width:100%;
+    .modal-product-information{
+        // border-bottom: 2px solid black;
+        width:40%;
+        margin-right:1rem;
+        margin-top:3px;
+        // cursor: pointer;
+        color:gray;
+    }
+    .modal-upload-product-image{
+        width:40%;
+        margin-top:3px;
+        // cursor: pointer;
+        color:gray;
+    }
+    h4{
+        font-size:1rem;
+        text-align: center;
+    }
+
+   
+}
+.active-product-nav{
+    border-bottom: 2px solid rgb(12, 66, 55);
+    border-radius:1px;
+    color:black !important;
+}
+.crop-product-image-container{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.crop-product-image-preview-container{
+    width:500px;
+    height:400px;
+    margin-left:4rem;
+    margin-top:2rem;
+}
+.crop-product-image-preview{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+.crop-product-preview-right{
+    // float:right;
+    height:400px;
+    width:300px;
+    border:1px solid black;
+    margin-right:5rem;
+    margin-top:4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.react-crop-product-image-container{
+    width:120px;
+    height:120px;
+   
+    .react-crop-product-image{
+        width:100%;
+        height:100%;
+        border-radius: 50%;
+        border:1px solid black;
+        // margin-left:2rem;
+    }
+}
+.crop-single-product-image-container{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.crop-single-product-image-preview-container{
+    width:500px;
+    height:500px;
+    margin-left:4rem;
+    margin-top:2rem;
+}
+.crop-single-product-image-preview{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+.crop-single-product-preview-right{
+    // float:right;
+    height:500px;
+    width:27rem;
+    border:1px solid black;
+    margin-right:5rem;
+    margin-top:2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+// .react-crop-single-product-image-container{
+//     width:120px;
+//     height:120px;
+   
+//     .react-crop-single-product-image{
+//         width:100%;
+//         height:100%;
+//         border-radius: 50%;
+//         border:1px solid black;
+//         // margin-left:2rem;
+//     }
+// }
+
+.product-photo{
+    width:100%;
+    height:50%;
+    object-fit: cover;
+}
+
+.my-products-grid{
+    display:grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 3rem;
+    margin-top:2rem;
+}
+
+.react-delete-icon, .react-edit-icon, .react-camera-icon{
+    font-size:20px;
+    cursor: pointer;
+    color:white;
+}
+
+
+
+.product-main-card-overlay{
+    position: absolute;
+    top:0;
+    width:16rem;
+    height:270px;
+    opacity:0;
+    visibility: hidden;
+    transition: all 1s ease;
+    // background-color:rgba(12, 66, 55, 0.808);
+    // background-color: rgb(0,150,136);
+    background-color:rgba(12, 66, 55, 0.89);
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+
+    h5{
+        color:white;
+        font-size:1rem;
+        cursor: pointer;
+        border:1px solid white;
+        padding:0.5rem 1rem;
+        
+    }
+}
+
+.product-details-container{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    // flex-direction: column;
+    width:100%;
+
+}
+
+
+// .change-product-image{
+//     display:none;
+// }
+
+
+
+
+

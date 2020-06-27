@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('productImage')->nullable();
+            $table->text('productImageTwo')->nullable();
             $table->text('description');
             $table->string('priceRange')->nullable();
             $table->string('otherPriceRange')->nullable();

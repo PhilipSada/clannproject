@@ -36,53 +36,53 @@
                       </div>
                     </div>
                    </div>
-                   <div class="bid-modal-container">
-                    <div class="bid-modal">
-                      <form method="POST" action="/{{$product->title}}/bid" class="bid-form">
-                        @csrf
-                            <input type="hidden" name="product_title" value="{{$product->title}}" >
-                            <input type="hidden" name="priceRange" value="{{$product->priceRange}}">
-                            <input type="hidden" name="category_title" value="{{$product->category_title}}">
-                            <input type="hidden" name="product_description" value="{{$product->description}}">
-                            <input type="hidden" name="seller_email" value="{{$product->created_by_email}}">
-                            <input type="hidden" name="seller_name" value="{{$product->created_by_name}}">
-                            <input type="hidden" name="bid_ref_no" value="{{$product->bid_ref_no}}">
-                           
-                        <div class="row pt-4 pl-4">
-                             <div class="col-md-8">
-                                 <div class="form-group">
-                                     <label for="bidPrice">How much are you willing to pay, seller's price range is {{$product->priceRange}}</label>
-                                     <input id="bidprice" type="text" class="form-control" @error('bidPrice') is-invalid @enderror name="bidPrice" value="{{ old('bidPrice') }}">
-     
-                                     @error('bidPrice')
-                                         <span class="invalid-feedback" role="alert">
-                                             <strong>{{ $message }}</strong>
-                                         </span>
-                                     @enderror
-                                 </div>
+                @endforeach
+              </div>
+              <div class="bid-modal-container">
+                <div class="bid-modal">
+                  <form method="POST" action="/{{$product->title}}/bid" class="bid-form">
+                    @csrf
+                        <input type="hidden" name="product_title" value="{{$product->title}}" >
+                        <input type="hidden" name="priceRange" value="{{$product->priceRange}}">
+                        <input type="hidden" name="category_title" value="{{$product->category_title}}">
+                        <input type="hidden" name="product_description" value="{{$product->description}}">
+                        <input type="hidden" name="seller_email" value="{{$product->created_by_email}}">
+                        <input type="hidden" name="seller_name" value="{{$product->created_by_name}}">
+                        <input type="hidden" name="bid_ref_no" value="{{$product->bid_ref_no}}">
+                       
+                    <div class="row pt-4 pl-4">
+                         <div class="col-md-8">
+                             <div class="form-group">
+                                 <label for="bidPrice">How much are you willing to pay, seller's price range is {{$product->priceRange}}</label>
+                                 <input id="bidprice" type="text" class="form-control" @error('bidPrice') is-invalid @enderror name="bidPrice" value="{{ old('bidPrice') }}">
+ 
+                                 @error('bidPrice')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                 @enderror
                              </div>
-                             <div class="col-md-4"></div>
-                        </div>
-                        
-                        <div class="row pl-4">
-                            <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
-                              <p>
-                                <button type="submit" class="clann-button">Bid</button> 
-                            </p>
-                             
-                            </div>
-                            <div class="col-sm-6 pr-0">
-                            
-                            </div>
-                        </div>
-                    </form>
-                    <div class="text-right">
-                      <button class="close-bid-modal text-center">Close</button> 
+                         </div>
+                         <div class="col-md-4"></div>
                     </div>
                     
+                    <div class="row pl-4">
+                        <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
+                          <p>
+                            <button type="submit" class="clann-button">Bid</button> 
+                        </p>
+                         
+                        </div>
+                        <div class="col-sm-6 pr-0">
+                        
+                        </div>
                     </div>
-                  </div>
-                @endforeach
+                </form>
+                <div class="text-right">
+                  <button class="close-bid-modal text-center">Close</button> 
+                </div>
+                
+                </div>
               </div>
              
         </div>

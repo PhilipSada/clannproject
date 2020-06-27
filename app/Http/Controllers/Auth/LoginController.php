@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -30,7 +31,28 @@ class LoginController extends Controller
      *
      * @var string
      */
+    //manual login
+    // public function authenticate(Request $request)
+    // {   
+    //     $email = request('login_email');
+    //     $password = request('login_password');
+
+    //     $credentials = $request->only('email', 'password');
+
+    //     // if (Auth::attempt(['email' => $email, 'password' => $password, 'is_admin' => 1])) {
+    //     //     // Authentication passed...
+    //     //     return redirect()->intended('/profile');
+    //     // }
+    //     if (Auth::attempt(['email' => $email, 'password' => $password])) {
+    //         // Authentication passed...
+    //         return redirect()->intended('/profile');
+    //     }
+    // }
+
     // protected $redirectTo = RouteServiceProvider::HOME;
+
+   
+    
     protected function authenticated(Request $request, $user){
         if($user->is_admin){
             return redirect('/admin/profile');

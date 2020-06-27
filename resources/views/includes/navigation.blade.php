@@ -1,5 +1,7 @@
 <nav class="navigate">
-    <div class="main-logo-container"><a href="/"><img src="/images/logo-white.png" class="main-logo-image"></a></div>
+    <div class="main-logo-container">
+        {{-- <a href="/"><img src="/images/logo-white.png" class="main-logo-image"></a> --}}
+    </div>
     <div class="nav-links">
         <ul>
             <li><a class="about-link">About</a></li>

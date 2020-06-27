@@ -15,12 +15,23 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class UserProductController extends Controller
 {
     public function __construct()
     {
         $this->middleware('is.auth');
+    }
+
+    public function getProductData(){
+        $products = Product::orderBy('id', 'DESC')->get();
+
+        return response()->json([
+            'products'=>$products
+        ]);
     }
     public function advertiseProduct(){
         $ProductCategories = ProductCategory::all();
@@ -32,112 +43,156 @@ class UserProductController extends Controller
         $user = Auth::user();
         $bids = Bid::where('seller_email', $user->email)->where('price_agreed', 0)->paginate(10);
         $products = Product::where('created_by_email', $user->email)->get();
-        return view('/users/products/all', [
-            'products'=>$products,
-            'bids'=>$bids
+        // return view('/users/products/all', [
+        //     'products'=>$products,
+        //     'bids'=>$bids
+        // ]);
+        return response()->json([
+            'products'=>$products
         ]);
     }
     public function createProduct(Request $request){
-        $user = Auth::user();
-        request()->validate([
-            'title' => ['string', 'max:255', 'required'],
+        // $user = Auth::user();
+       
+        $validator = Validator::make($request->json()->all(), [
+            'title' => ['string', 'max:100'],
             'priceRange' => ['required'],
-            'category_title' => ['required'],
-            'description'=>['required'],
-            'productImage'=>['mimes:jpeg,jpg,png,svg', 'max:5120']
-            
+            'description' => ['required','min:20', 'max:255'], 
+            'category' => ['required'],
         ]);
 
-        // $productImage = $request->file('productImage');
-        $productImage = request('productImage');
-        $filename=time() . '.' . $productImage->getClientOriginalExtension();
-        Image::make($productImage)->save(public_path('/images/uploads/userProducts/'. $filename));
+        if($validator->fails()){
+            return response()->json(['errors'=>$validator->errors()]);
+        }
 
-        $product = new Product();
-        $product->title = request('title');
-        $product->description = request('description');
-        $product->priceRange = request('priceRange');
-        $product->productImage = '/images/uploads/userProducts/'.$filename;
-        $product->category_title = request('category_title');
+
+        // $product = new Product();
+        // $product->title = $request->json()->get('title');
+        // $product->description = $request->json()->get('description');
+        // $product->priceRange = $request->json()->get('priceRange');
+        // $product->category_title = $request->json()->get('category');
+        // $product->created_by_email = $user->email;
+        // $product->created_by_name = $user->name;
+        // $product->bid_ref_no = strtoupper(uniqid());
+        // $product->save();
+        
+        
+        // return response()->json(['success'=>$product->id]);
+        return response()->json(['success'=>'product successfully validated']);
+    }
+    public function uploadProductInformation(Request $request){
+        if(($request->json()->get('image')) and ($request->json()->get('secondImage')) ){
+            $image_64 = $request->json()->get('image'); //your base64 encoded data
+    
+            $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   
+          
+            $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
+          
+          // find substring fro replace here eg: data:image/png;base64,
+          
+           $image = str_replace($replace, '', $image_64); 
+          
+           $image = str_replace(' ', '+', $image); 
+          
+           $imageName = Str::random(10).'.'.$extension;
+          
+           File::put(public_path(). '/images/uploads/' . $imageName, base64_decode($image));
+
+           //for the second image
+           $secondImage_64 = $request->json()->get('secondImage'); //your base64 encoded data
+    
+           $secondExtension = explode('/', explode(':', substr($secondImage_64, 0, strpos($secondImage_64, ';')))[1])[1];   
+         
+           $secondReplace = substr($secondImage_64, 0, strpos($secondImage_64, ',')+1); 
+         
+         // find substring fro replace here eg: data:image/png;base64,
+         
+          $secondImage = str_replace($secondReplace, '', $secondImage_64); 
+         
+          $secondImage = str_replace(' ', '+', $secondImage); 
+         
+          $secondImageName = Str::random(10).'.'.$secondExtension;
+         
+          File::put(public_path(). '/images/uploads/' . $secondImageName, base64_decode( $secondImage));
+
+    
+            $user = Auth::user();
+            //    $product = Product::find($id);
+            //    $product->productImage = '/images/uploads/'.$imageName;
+            //    $product->save();
+            
+           $product = new Product();
+           $product->title = $request->json()->get('title');
+           $product->description = $request->json()->get('description');
+           $product->priceRange = $request->json()->get('priceRange');
+           $product->category_title = $request->json()->get('category');
+           $product->created_by_email = $user->email;
+           $product->created_by_name = $user->name;
+           $product->bid_ref_no = strtoupper(uniqid());
+           $product->productImage = '/images/uploads/'.$imageName;
+           $product->productImageTwo = '/images/uploads/'.$secondImageName;
+           $product->save();
+
+           return response()->json(['success'=>'image uploaded']);
+           }
+        return response()->json(['error'=>'You have not uploaded any image']);
+    }
+    public function editProductInformation(Request $request, $id){
+        $user = Auth::user();
+       
+        $validator = Validator::make($request->json()->all(), [
+            'title' => ['string', 'max:100'],
+            'priceRange' => ['required'],
+            'description' => ['required', 'min:20', 'max:255'], 
+            'category' => ['required'],
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['errors'=>$validator->errors()]);
+        }
+
+
+        $product = Product::find($id);
+        $product->title = $request->json()->get('title');
+        $product->description = $request->json()->get('description');
+        $product->priceRange = $request->json()->get('priceRange');
+        $product->category_title = $request->json()->get('category');
         $product->created_by_email = $user->email;
         $product->created_by_name = $user->name;
         $product->bid_ref_no = strtoupper(uniqid());
         $product->save();
         
-        $content = [
-            'name'=>$user->name,
-            'email'=>$user->email
-        ];
-
-        $recipients =[
-            'sadaphillip@gmail.com',
-            'vctrsada@gmail.com'
-
-        ];
-         
-        Mail::to($recipients)->send(new AwaitingProductApproval($content));
         
-        // $adminUser = User::where('email', 'sadaphillip@gmail.com');
-        // $adminUser = User::find(4);
-        // Notification::send($adminUser, new ProductSentForReview);
-        return redirect('/advertised-products');
-    }
-    public function approvedProducts(){
-        //look for a way to create a relationship between bids and products table to get the product_sold for a specific item
-        $approvedProducts = Product::where('approve', 1)->get();
-        return view('/users/approved-products/all', [
-            'approvedProducts'=>$approvedProducts,
-        ]);
-    }
-    public function approvedSingleProduct($slug){
-        $product = Product::where('title',$slug )->first();
-        $similarProducts = Product::all()->where('title', '!=', $slug)->where('category_title', $product->category_title);
-        return view('/users/approved-products/single-product',[
-            'product'=>$product,
-            'similarProducts'=>$similarProducts
-        ]);
-    }
-    public function bidProductModal(Request $request){
-        $user = Auth::user();
-        $bid = new Bid();
-        $bid->product_title = request('product_title');
-        $bid->priceRange = request('priceRange');
-        $bid->product_description = request('product_description');
-        $bid->category_title = request('category_title');
-        $bid->seller_email = request('seller_email');
-        $bid->seller_name = request('seller_name');
-        $bid->bidPrice = request('bidPrice');
-        $bid->bid_ref_no = request('bid_ref_no');
-        $bid->bidder_email = $user->email;
-        $bid->bidder_name = $user->name;
-        $bid->save();
-        
-        $content = [
-            'name'=>$user->name,
-            'email'=>$user->email,
-            'product_title'=>request('product_title'),
-            'seller_name'=>request('seller_name'),
-            'bidPrice'=>request('bidPrice')
-        ];
+        return response()->json(['success'=>$product->id]);
 
-        $recipient = request('seller_email');
-         
-        Mail::to($recipient)->send(new BidPriceSent($content));
-        //change redirect to a confirmation page or use react to change the space of the form to bid price has been sent to the seller
-        return redirect('/profile');
     }
+ 
+    public function deleteProduct(Request $request, $id){
+        $product = Product::find($id);
+        $product->delete();
+        return response()->json(['success'=>'product deleted']);
+    }
+    
     public function bidProduct(Request $request){
-        
+        $validator = Validator::make($request->json()->all(), [
+            'bidPrice' => ['numeric'],
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['errors'=>$validator->errors()]);
+        }
+
         $user = Auth::user();
         $bid = new Bid();
-        $bid->product_title = request('product_title');
-        $bid->priceRange = request('priceRange');
-        $bid->product_description = request('product_description');
-        $bid->category_title = request('category_title');
-        $bid->seller_email = request('seller_email');
-        $bid->seller_name = request('seller_name');
-        $bid->bidPrice = request('bidPrice');
-        $bid->bid_ref_no = request('bid_ref_no');
+
+        $bid->product_title = $request->json()->get('productTitle');
+        $bid->priceRange = $request->json()->get('priceRange');;
+        $bid->product_description = $request->json()->get('productDescription');
+        $bid->category_title = $request->json()->get('categoryTitle');
+        $bid->seller_email = $request->json()->get('sellerEmail');
+        $bid->seller_name = $request->json()->get('sellerName');
+        $bid->bidPrice = $request->json()->get('bidPrice');
+        $bid->bid_ref_no = $request->json()->get('bidRefNo');
         $bid->bidder_email = $user->email;
         $bid->bidder_name = $user->name;
         $bid->save();
@@ -145,21 +200,24 @@ class UserProductController extends Controller
         $content = [
             'name'=>$user->name,
             'email'=>$user->email,
-            'product_title'=>request('product_title'),
-            'seller_name'=>request('seller_name'),
-            'bidPrice'=>request('bidPrice')
+            'product_title'=>$request->json()->get('productTitle'),
+            'seller_name'=>$request->json()->get('sellerName'),
+            'bidPrice'=>$request->json()->get('bidPrice')
         ];
 
-        $recipient = request('seller_email');
+        $recipient = $request->json()->get('sellerEmail');
          
         Mail::to($recipient)->send(new BidPriceSent($content));
-        //change redirect to a confirmation page or use react to change the space of the form to bid price has been sent to the seller
-        return redirect('/profile');
+        
+        return response()->json(['success'=>'bid successfully sent']);
     }
-    public function showBids(){
+    public function showBidsReceived(){
         $user = Auth::user();
         $bids = Bid::where('seller_email', $user->email)->where('price_agreed', 0)->paginate(10);
-        return view('/users/bids/all', [
+        // return view('/users/bids/all', [
+        //     'bids'=>$bids
+        // ]);
+        return response()->json([
             'bids'=>$bids
         ]);
     }

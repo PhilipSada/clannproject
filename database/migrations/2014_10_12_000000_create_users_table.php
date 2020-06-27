@@ -22,10 +22,13 @@ class CreateUsersTable extends Migration
             $table->string('google_id')->nullable();
             $table->string('estateName')->nullable();
             $table->string('otherEstateName')->nullable();
-            $table->string('userType')->nullable();
+            $table->string('resident_status')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('otherOccupation')->nullable();
             $table->string('password')->nullable();
             $table->string('avatar')->nullable();
             $table->string('avatar_original')->nullable();
+            $table->text('profile_summary')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
